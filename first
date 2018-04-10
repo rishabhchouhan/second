@@ -17,3 +17,26 @@ scanf("%d",&p[i]);
 printf("\n\nEnter burst time for this process ");
 scanf("%d",&bt[i]);
 }
+for(i=0;i<num-1;i++)                                                                                           //O(num-1)
+{
+for(j=0;j<(num-i-1);j++)                                                                                     //O(num-i-1)
+{
+if(p[j]>p[j+1]){
+temp=p[j];
+p[j]=p[j+1];
+p[j+1]=temp;
+temp=pro[j];
+pro[j]=pro[j+1];
+pro[j+1]=temp;
+temp=bt[j];
+bt[j]=bt[j+1];
+bt[j+1]=temp;
+}}
+}
+for(i=0;i<num;i++)                                                                                           		 // O(num)
+{
+printf("Process P%d",pro[i]);
+printf(" with priority %d",p[i]);
+printf(" has burst time %d",bt[i]);
+printf("\n\n");
+}
