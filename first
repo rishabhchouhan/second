@@ -6,14 +6,14 @@ int temp=0;
 printf("Enter number of processes\n");
 scanf("%d",&num);
 int q1[num],q2[num],q3[num];
-int p[num],pro[num],bt[num],at[num],rt[num];
+int prio[num],pro[num],bt[num],at[num],rt[num];
 for(i=0;i<num;i++)                                                                                             // O(num)                             
 {
 printf("\n\nEnter process name for process %d = ",i+1,"\n");
 printf("P");
 scanf("%d",&pro[i]);
 printf("\n\nEnter priority for this process ");
-scanf("%d",&p[i]);
+scanf("%d",&prio[i]);
 printf("\n\nEnter burst time for this process ");
 scanf("%d",&bt[i]);
 }
@@ -21,10 +21,10 @@ for(i=0;i<num-1;i++)                                                            
 {
 for(j=0;j<(num-i-1);j++)                                                                                     //O(num-i-1)
 {
-if(p[j]>p[j+1]){
-temp=p[j];
-p[j]=p[j+1];
-p[j+1]=temp;
+if(prio[j]>prio[j+1]){
+temp=prio[j];
+prio[j]=prio[j+1];
+prio[j+1]=temp;
 temp=pro[j];
 pro[j]=pro[j+1];
 pro[j+1]=temp;
@@ -36,7 +36,7 @@ bt[j+1]=temp;
 for(i=0;i<num;i++)                                                                                           		 // O(num)
 {
 printf("Process P%d",pro[i]);
-printf(" with priority %d",p[i]);
+printf(" with priority %d",prio[i]);
 printf(" has burst time %d",bt[i]);
 printf("\n\n");
 }
@@ -47,7 +47,7 @@ scanf("%d",&b);
 printf("Enter the number of processes you want to process in queue 3 :\n");
 scanf("%d",&c);
 for(i=0;i<a;i++){                                                                                                        //O(a)
-q1[x]=p[i];
+q1[x]=prio[i];
 x=x+1;
 }
 printf("_________________\n");
@@ -55,12 +55,12 @@ printf("|	QUEUE 1		Priority  Burst time  |\n");
 printf("|_______________|\n");
 for(i=0;i<a;i++){                                                                                                        //O(a)
 printf("	  P%d		   ",pro[i]);
-printf("%d		",p[i]);
+printf("%d		",prio[i]);
 printf("%d\n",bt[i]);
 }
 printf("_________________\n\n");
 for(i=a;i<b+a;i++){                                                                                                     //O(b)
-q2[x]=p[i];
+q2[x]=prio[i];
 x=x+1;
 }
 printf("\n");
@@ -69,12 +69,12 @@ printf("|	QUEUE 2		Priority  Burst time  |\n");
 printf("|_______________|\n");
 for(i=a;i<b+a;i++){                                                                                                     //O(b)
 printf("	  P%d		   ",pro[i]);
-printf("%d     ",p[i]);
+printf("%d     ",prio[i]);
 printf("%d\n",bt[i]);
 }
 printf("_________________\n\n");
 for(i=b+a;i<c+b+a;i++){                                                                                            //O(c)
-q3[x]=p[i];
+q3[x]=prio[i];
 x=x+1;
 }
 printf("\n");
@@ -83,7 +83,7 @@ printf("|	QUEUE 3		Priority  Burst time  |\n");
 printf("|_______________|\n");
 for(i=b+a;i<c+a+b;i++){                                        					//O(c)
 printf("	  P%d		   ",pro[i]);
-printf("%d     ",p[i]);
+printf("%d     ",prio[i]);
 printf("%d\n",bt[i]);
 }
 printf("_________________\n");
@@ -132,7 +132,7 @@ printf("\n\nAverage waiting time= %f sec\n",waiting_time*1.0/a);
 printf("\nAverage turnaround time= %f sec\n",turn_time*1.0/a);
 printf("\n\n-------------------------------------------------------------\n\n");
 printf("\n\nWELCOME TO QUEUE 2... LETUS DO PRIORITY QUEUE SCHEDULING..\n");
-int wtime[num],ttime[n];int avg_wt,avg_tat,total=0;
+int wtime[num],ttime[num];int avg_wt,avg_tat,total=0;
 wtime[a]=0;
 for(i=a+1;i<b+a;i++){									//O(b)
 wtime[i]=0;
